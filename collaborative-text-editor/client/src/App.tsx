@@ -11,10 +11,6 @@ const App: React.FC = () => {
     socket.on('text change', (newValue: string) => {
       setText(newValue);
     });
-
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   const handleChange = (newValue: string) => {

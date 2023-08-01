@@ -22,8 +22,6 @@ io.on('connection', (socket: Socket) => {
   socket.on('text change', (newValue: string) => {
     socket.broadcast.emit('text change', newValue); // broadcast the change to all other connected clients
   });
-
-  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
