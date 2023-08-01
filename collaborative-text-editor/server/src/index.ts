@@ -1,11 +1,20 @@
 import { Server, Socket } from "socket.io";
 import express from 'express';
 import http from 'http';
+import cors from 'cors';
 
-const port: string | number = process.env.PORT || 4001;
-const app: express.Express = express();
-const server: http.Server = http.createServer(app);
-const io: Server = new Server(server);
+const port = process.env.PORT || 4001;
+const app = express();
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000", // Allow requests from 'http://localhost:3000'
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
+  },
+});
 
 io.on('connection', (socket: Socket) => {
   console.log('New client connected');

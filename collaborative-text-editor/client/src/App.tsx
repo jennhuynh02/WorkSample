@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Socket } from 'socket.io-client';
-import io from 'socket.io-client';
+import socketIOClient from 'socket.io-client';
 import TextEditor from './components/TextEditor';
 
-const socket: Socket = io('http://localhost:4001');
+const socket = socketIOClient('http://localhost:4001');
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>('');
